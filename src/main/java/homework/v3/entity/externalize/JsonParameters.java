@@ -2,11 +2,14 @@ package homework.v3.entity.externalize;
 
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
-import java.io.Serializable;
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.util.List;
 
 @JsonPropertyOrder({"name", "description", "isList", "roles", "type", "bundle"})
-public class JsonParameters implements Serializable {
+public class JsonParameters implements Externalizable {
     
     public static final long SerialVersionUID = 1L;
     
@@ -29,7 +32,7 @@ public class JsonParameters implements Serializable {
         return isList;
     }
 
-    public void setList(boolean isList) {
+    public void setIsList(boolean isList) {
         this.isList = isList;
     }
 
@@ -63,6 +66,27 @@ public class JsonParameters implements Serializable {
 
     public void setBundle(List<Bundle> bundle) {
         this.bundle = bundle;
+    }
+
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException
+    {
+        out.writeObject(this.getName());
+        out.writeObject(this.getDescription());
+        out.writeObject(this.getisList());
+        out.writeObject(this.getRoles());
+        out.writeObject(this.getType());
+        out.writeObject(this.getBundle());
+    }
+
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        this.setName((String) in.readObject());
+        this.setDescription((String) in.readObject());
+        this.setIsList((boolean) in.readObject());
+        this.setRoles((List<String>) in.readObject());
+        this.setType((String) in.readObject());
+        this.setBundle((List<Bundle>) in.readObject());
     }
 
     @Override

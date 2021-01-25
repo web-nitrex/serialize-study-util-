@@ -1,10 +1,10 @@
 package homework.v3;
 
-import homework.v3.da.serialize.JsonSerializeReaderHomeWork;
-import homework.v3.da.serialize.JsonSerializeWriterHomeWork;
-import homework.v3.da.serialize.SerializeWriterHomeWork;
-import homework.v3.da.serialize.SerializeReaderHomeWork;
-import homework.v3.entity.serialize.JsonFileClass;
+import homework.v3.da.externalize.JsonExternalizeReaderHomeWork;
+import homework.v3.da.externalize.ExternalizeWriterHomeWork;
+import homework.v3.da.externalize.ExternalizeReaderHomeWork;
+import homework.v3.da.externalize.JsonExternalizeWriterHomeWork;
+import homework.v3.entity.externalize.JsonFileClass;
 
 import java.io.IOException;
 
@@ -27,24 +27,23 @@ import java.io.IOException;
  * * можно сделать и с json-схемой, пренципиально механизм не поменяется.
  * */
 
-public class HomeWorkSerialize {
+public class HomeWorkExternalizable {
     public static final String SOURCE_FILE = "homework.parameters.json";
-    public static final String SERIALIZE_FILE = "homework.parameters.ser";
-    public static final String RESULT_FILE = "homework.result.ser.parameters.json";
+    public static final String SERIALIZE_FILE = "homework.parameters.exter";
+    public static final String RESULT_FILE = "homework.result.exter.parameters.json";
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         System.out.println("Read data from file source JSON file" + SOURCE_FILE + "\n");
-        JsonFileClass srcData = new JsonSerializeReaderHomeWork().read(SOURCE_FILE);
+        JsonFileClass srcData = new JsonExternalizeReaderHomeWork().read(SOURCE_FILE);
 
         System.out.println("Write data to serialize file " + SERIALIZE_FILE + "\n");
-        new SerializeWriterHomeWork().customSerializeWriter(srcData, SERIALIZE_FILE);
+        new ExternalizeWriterHomeWork().customExternalizeWriter(srcData, SERIALIZE_FILE);
 
         System.out.println("Read data from serialize file " + SERIALIZE_FILE + "\n");
-        JsonFileClass readData = new SerializeReaderHomeWork().customSerializeReader(SERIALIZE_FILE);
+        JsonFileClass readData = new ExternalizeReaderHomeWork().customExternalizeReader(SERIALIZE_FILE);
 
         System.out.println("Write data to result JSON file " + RESULT_FILE + "\n");
-        new JsonSerializeWriterHomeWork().customJsonWriter(readData,RESULT_FILE);
-
+        new JsonExternalizeWriterHomeWork().customJsonWriter(readData, RESULT_FILE);
     }
 }
