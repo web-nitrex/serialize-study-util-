@@ -6,9 +6,7 @@
 //
 
 
-package classwork.entity.jaxb.classwork.entity.jaxb;
-
-import classwork.entity.jaxb.Path;
+package classwork.entity.jaxb;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -96,9 +96,11 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <packageName>classwork.entity.jaxb</packageName>
+<!--                    <packageName>classwork.entity.jaxb</packageName>-->
+                    <packageName>homework.v3.entity.jaxb</packageName>
                     <sources>
-                        <source>src/main/resources/generated/objects_schema.xsd</source>
+<!--                        <source>src/main/resources/generated/objects_schema.xsd</source>-->
+                        <source>src/main/resources/generated/homework_objects_schema.xsd</source>
                     </sources>
                     <xjbSources>
                         <xjbSource>src/main/resources/generated/global.xjb</xjbSource>

@@ -6,7 +6,7 @@
 //
 
 
-package classwork.entity.jaxb.classwork.entity.jaxb;
+package classwork.entity.jaxb;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
